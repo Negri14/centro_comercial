@@ -1,14 +1,11 @@
 package br.usp.centrocomercial.model;
 
-import java.util.List;
-
 public class CompraRequest {
 
 	private String aboutCliente;
-	private List<ItemCarrinho> itensCarrinho;
-	private double valorTotal;
+	private String aboutCarrinho;
 	private String formaPagamento;
-
+	
 	public String getAboutCliente() {
 		return aboutCliente;
 	}
@@ -17,20 +14,12 @@ public class CompraRequest {
 		this.aboutCliente = aboutCliente;
 	}
 
-	public List<ItemCarrinho> getItensCarrinho() {
-		return itensCarrinho;
+	public String getAboutCarrinho() {
+		return aboutCarrinho;
 	}
 
-	public void setItensCarrinho(List<ItemCarrinho> itensCarrinho) {
-		this.itensCarrinho = itensCarrinho;
-	}
-
-	public double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setAboutCarrinho(String aboutCarrinho) {
+		this.aboutCarrinho = aboutCarrinho;
 	}
 
 	public String getFormaPagamento() {
@@ -40,7 +29,5 @@ public class CompraRequest {
 	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
-	
-	
 
 }

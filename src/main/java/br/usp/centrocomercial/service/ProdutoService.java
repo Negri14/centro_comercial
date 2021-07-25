@@ -21,14 +21,17 @@ import br.usp.centrocomercial.model.QuantidadeEstoque;
 public class ProdutoService {
 	
 	private String queryProdutos =  Constants.PREFIX+
-					           "SELECT ?about ?id ?nome ?preco ?quantidade_estoque ?categoria { "+
-					            	  "?about rdf:type ontologia:Mercadoria ." +
+					           "SELECT ?about ?id ?nome ?preco ?quantidade_estoque ?categoria ?pictureURI ?descricao { "+
+					           		  "?aboutLoja rdf:type ontologia:Loja."+
+					           		  "?aboutLoja ontologia:oferece ?about."+
 					            	  "?about ontologia:id ?id ."+
 					            	  "?about ontologia:nome ?nome ."+
 					            	  "?about ontologia:preco ?preco ."+
-					            	  "?usuario ontologia:categoria ?categoria ."+
-					            	  "?about ontologia:quantidade_estoque ?quantidade_estoque ."
-					            	  + "%s } "; 
+					            	  "?about ontologia:descricao ?descricao ."+
+					            	  "?about ontologia:categoria ?categoria ."+
+					            	  "?about ontologia:quantidade_estoque ?quantidade_estoque ."+
+					            	  "?about ontologia:imagem ?pictureURI ."
+					            	  + "%s} "; 
 	
 	private String queryQntProdutos =   Constants.PREFIX+
 							            "SELECT ?quantidade_estoque  { "+
@@ -37,8 +40,9 @@ public class ProdutoService {
 							            " %s } "; 
 	
 		
-	private String queryFilter = "FILTER(%s = \"%s\")";
-	
+	private String queryFilter = "FILTER(%s = %s)";
+	private String queryFilterInteresse = "FILTER(%s IN (%s))";
+
 	private CentroComercialRepository repository;
 	private JsonConverter jsonConverter;
 	
@@ -54,17 +58,29 @@ public class ProdutoService {
 		this.repository.executeUpdate("DELETE { ?s ?o ?p } WHERE { ?s ?o ?p }");
 	}
 	
-	public List<Produto> buscarProdutos() {
-		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, ""));
+	public List<Produto> buscarProdutos(String aboutLoja) {
+		//repository.ler();
+		System.out.println(aboutLoja);
+		String filter = String.format(queryFilter, "?aboutLoja", "<"+aboutLoja+">");
+		System.out.println(String.format(queryProdutos, filter));
+		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, filter));
 		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);
+		System.out.println(jsonList.toString());
 		List<Produto> response = new Gson().fromJson(jsonList.toString(), lProdutoType);
 		return response;
 	}
 
 	
-	public List<Produto> buscarProdutoPorCategoria(String categoria) {
-		String filter = String.format(queryFilter, "?categoria", categoria);
-		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, filter));
+	public List<Produto> buscarProdutoPorCategoria(String about, String[] interesse) {
+		String filter = String.format(queryFilter, "?aboutLoja", "<"+about+">");
+		String interesses = "";
+		for (String x : interesse) {
+			interesses = interesses + "\"" + x + "\"" + ",";
+		}
+		interesses = interesses.substring(0, interesses.length() - 1);
+		System.out.print(interesses);
+		String filter2 = String.format(queryFilterInteresse, "?categoria", interesses);
+		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, filter.concat(filter2)));
 		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);
 		List<Produto> response = new Gson().fromJson(jsonList.toString(), lProdutoType);
 		return response;

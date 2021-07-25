@@ -5,23 +5,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.usp.centrocomercial.model.CarrinhoRequest;
+import br.usp.centrocomercial.model.CarrinhoResponse;
 import br.usp.centrocomercial.model.CompraRequest;
 import br.usp.centrocomercial.service.CompraService;
 
 @RestController
 public class CompraController {
-
 	
-	private CompraService compraService;
+	private CompraService service;
 	
 	@Autowired
 	public CompraController(CompraService compraService) {
-		this.compraService = compraService;
+		this.service = compraService;
 	}
 	
 	@PostMapping("/efetivarCompra")
 	public void registrarCompra(@RequestBody CompraRequest request) {
-		this.compraService.gravarCompra(request);
+		this.service.gravarCompra(request);
+	}
+	
+	@PostMapping("/criarCarrinho")
+	public CarrinhoResponse criarCarrinho(@RequestBody CarrinhoRequest request) {
+		return this.service.criarCarrinho(request);	
+	}
+	
+	@PostMapping("/adicionarProduto")
+	public CarrinhoResponse adicionarProduto(@RequestBody CarrinhoRequest request) {
+		return this.service.adicionarProdutoCarrinho(request);
+	}
+	
+	@PostMapping("/removerProduto")
+	public CarrinhoResponse removerProduto(@RequestBody CarrinhoRequest request) {
+		return this.service.removerProdutoCarrinho(request);
+	}
+	
+	@PostMapping("/incrementar")
+	public CarrinhoResponse incrementarQntProduto(@RequestBody CarrinhoRequest request) {
+		return this.service.atualizarQntItens(request, 1);		
+	}
+	
+	@PostMapping("/decrementar")
+	public CarrinhoResponse decrementarQntProduto(@RequestBody CarrinhoRequest request) {
+		return this.service.atualizarQntItens(request, -1);		
 	}
 	
 }

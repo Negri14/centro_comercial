@@ -25,6 +25,7 @@ public class JsonConverter {
             	
                 String atributo = iterator.next();
                 String valor = querySolution.get(atributo).toString();
+                System.out.println(valor);
                 valor = valor.contains("^^http") ? valor.substring(0, valor.indexOf("^^http")) : "\""+valor+"\"";
                 valor = valor.replace("\\\"", "");
                 json = json + "\"" + atributo + "\"" + ":" +valor+", ";

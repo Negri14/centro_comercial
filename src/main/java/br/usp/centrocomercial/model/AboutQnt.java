@@ -1,16 +1,18 @@
 package br.usp.centrocomercial.model;
 
-public class ItemCarrinho {
-
-	private String aboutProduto;
+public class AboutQnt {
+	
+	private String about;
 	private int quantidade;
 	
-	public String getAboutProduto() {
-		return aboutProduto;
+	public AboutQnt() {}
+
+	public String getAbout() {
+		return about;
 	}
 
-	public void setAboutProduto(String aboutProduto) {
-		this.aboutProduto = aboutProduto;
+	public void setAbout(String about) {
+		this.about = about;
 	}
 
 	public int getQuantidade() {
@@ -19,6 +21,8 @@ public class ItemCarrinho {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
-	}
+	};
+	
+	
 
 }

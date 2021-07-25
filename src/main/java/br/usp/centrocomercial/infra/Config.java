@@ -25,18 +25,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Config {
 	
 	private final String DIRECTORY  = "Databases/CentroEmpresarial";
-	private final String FILE  = "C:\\Users\\leoco\\Desktop\\Entrega_1\\EP_1.owl";
+	private final String FILE  = "VF.owl";
 
 	
-	@Bean
-	public OntModel ontologyModel() {
-		
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-		InputStream input = RDFDataMgr.open("C:\\Users\\leoco\\Desktop\\Entrega_1\\EP_1.owl");
-		model.read(input, "");
-		return model;
-		
-	}
+//	@Bean
+//	public OntModel ontologyModel() {
+//		
+//		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+//		InputStream input = RDFDataMgr.open("C:\\Users\\leoco\\Desktop\\Entrega_1\\EP_1.owl");
+//		model.read(input, "");
+//		return model;
+//		
+//	}
 	
 	@Bean
 	public Dataset dataset() {

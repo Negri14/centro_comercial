@@ -22,13 +22,13 @@ public class ProdutoController {
 	}
 	
 	@GetMapping(value = "/produtos")
-	public List<Produto> obterProdutos() {
-		return this.service.buscarProdutos();
+	public List<Produto> obterProdutos(@RequestParam("aboutLoja") String aboutLoja) {
+		return this.service.buscarProdutos(aboutLoja);
 	}
 	
-	@GetMapping(value = "/produtosInteresse", params="interesse")
-	public List<Produto> obterProdutosPorInteresse(@RequestParam("interesse") String interesse) {
-		return this.service.buscarProdutoPorCategoria(interesse);
+	@GetMapping(value = "/produtosInteresse")
+	public List<Produto> obterProdutosPorInteresse(@RequestParam("aboutLoja") String aboutLoja, @RequestParam("interesse") String[] interesse) {
+		return this.service.buscarProdutoPorCategoria(aboutLoja, interesse);
 	}
 	
 	@GetMapping(value = "/delete")

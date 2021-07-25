@@ -30,8 +30,8 @@ public class LojaController {
 		return this.service.buscarLojasAtividade(atividade);
 	}
 	
-	@GetMapping(value = "/lojasOrdenado")
-	public List<Loja> obterLojasOrdenado() {
-		return this.service.buscarLojasOrdenado();
+	@GetMapping(value = "/lojas", params = "orderBy")
+	public List<Loja> obterLojasOrdenado(@RequestParam(value="orderBy") String tipo) {
+		return this.service.buscarLojasOrdenado(tipo);
 	}
 }

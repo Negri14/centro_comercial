@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.usp.centrocomercial.model.NovoClienteRequest;
 import br.usp.centrocomercial.model.Produto;
 import br.usp.centrocomercial.service.ClienteService;
+import br.usp.centrocomercial.service.NovoClienteResponse;
 import io.swagger.annotations.Api;
 
 @RestController
@@ -28,19 +31,14 @@ public class ClienteController {
 		return this.service.buscarClientes();
 	}
 	
-	@GetMapping(value = "/clientesCPF", params = "cpf")
-	public List<Produto> obterLojasPorAtividade(@RequestParam("cpf") String cpf) {
-		return this.service.buscarClientePorCPF(cpf);
+	@GetMapping(value = "/clientes", params = "email")
+	public List<Produto> buscarClienteEmail(@RequestParam(value = "email") String email) {
+		return this.service.buscarClienteEmail(email);
 	}
 	
-//	@PostMapping(value = "/insereCliente")
-//	public void inserir() {
-//		this.service.cadastrarCliente(null);
-//	}
+	@PostMapping(value = "/clientes")
+	public NovoClienteResponse inserir(@RequestBody NovoClienteRequest request) {
+		return this.service.cadastrarCliente(request);
+	}
 	
-//	@GetMapping(value = "/clientesDB")
-//	public String obterClientesDB() {
-//		//return this.service.recuperarDB();
-//	}
-
 }
