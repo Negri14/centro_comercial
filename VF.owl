@@ -610,7 +610,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CD Abbey Road - The Beatles</ontologia:nome>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
-        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://a-static.mlcdn.com.br/1500x1500/the-beatles-abbey-road-2cds-deluxe-edition-universal-music/lojinhamis/641p/d322850a537e4946bdfab7c7f3fbeb4e.jpg</ontologia:imagem>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://a-static.mlcdn.com.br/1500x1500/the-beatles-abbey-road-2cds-deluxe-edition-universal-music/lojinhamis/641p/d322850a537e4946bdfab7c7f3fbeb4e.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -623,6 +623,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assasinato no Expresso Oriente</ontologia:nome>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
+                <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.lpm.com.br/livros/imagens/assassinato_no_expresso_oriente_hq_9788525437044_hd.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -637,7 +638,7 @@
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:categoria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oi</ontologia:categoria>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
-        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://images-na.ssl-images-amazon.com/images/I/91s0NrY7iaL.jpg</ontologia:imagem>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://images-na.ssl-images-amazon.com/images/I/91s0NrY7iaL.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -651,6 +652,7 @@
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.farmasp.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)3333-3333</ontologia:telefone>
         <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>        
+           <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://ictq.com.br/images/Como_%C3%A9_trabalhar_na_DPSP.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -675,7 +677,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Livraria Galáxia&quot;</ontologia:nome>
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.livrariagalaxia.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)1111-1111</ontologia:telefone>
-        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>
+          <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://fastly.4sqi.net/img/general/600x600/7742149_u1Vc4XJD4pSB72LmwfouY8G5JJDajMDhuIrQYz-ur4Q.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -688,6 +690,8 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Livraria Souza&quot;</ontologia:nome>
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.livrariasouza.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)2222-2222</ontologia:telefone>
+                <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://diariodorio.com/wp-content/uploads/2016/02/Livraria-Cultura-do-Rio-fica-na-Rua-Senador-Dantas-1-1280x720.jpg</ontologia:imagem>
+
     </owl:NamedIndividual>
     
 
@@ -700,6 +704,7 @@
         <ontologia:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lucas_moreira@usp.br</ontologia:email>
         <ontologia:interesse rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Livro</ontologia:interesse>
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucas Moreira</ontologia:nome>
+        
     </owl:NamedIndividual>
     
 
@@ -725,6 +730,8 @@
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.caoegato.com.br</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)4444-4444</ontologia:telefone>
         <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>
+                <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://s3-sa-east-1.amazonaws.com/simplesvet-public/site/3596/3596-f02cb85e145eefe3298183a319175c55.jpg</ontologia:imagem>
+
     </owl:NamedIndividual>
     
 
@@ -738,6 +745,8 @@
         <ontologia:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</ontologia:id>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.clubeparacachorros.com.br/wp-content/uploads/2016/08/racao-de-cachorro-pode-ser-comida-por-humanos.jpg</ontologia:imagem>
+
     </owl:NamedIndividual>
     
 
@@ -751,6 +760,7 @@
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.superbrasil.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)5555-5555</ontologia:telefone>
         <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://monitormercantil.com.br/wp-content/uploads/2020/12/Supermercado.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
 
@@ -765,6 +775,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Xampu Apple 350ml</ontologia:nome>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.beautyeditor.com.br/wp-content/uploads/2019/12/pantene-shampoo-condicionador-micelar.jpg</ontologia:imagem>
     </owl:NamedIndividual>
 
 </rdf:RDF>
