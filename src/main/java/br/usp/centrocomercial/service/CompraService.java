@@ -85,6 +85,7 @@ public class CompraService {
 							+ "		}" 
 							+"    FILTER(?aboutCarrinho = <%s>)"
 							+"}";
+
 	
 	private CentroComercialRepository repository;
 	private ProdutoService produtoService;
@@ -278,6 +279,13 @@ public class CompraService {
 		
 		return response;	
 
+	}
+	
+	public CarrinhoResponse obterCarrinhoAbout(String aboutCarrinho) {
+		ResultSet set = repository.executeSelect(String.format(this.queryCarrinho, aboutCarrinho));	
+		List<String> jsonList = jsonConverter.convertResultSetToJson(set);
+		System.out.println(new Gson().toJson(jsonList).toString());
+		return montarObject(aboutCarrinho);
 	}
 
 }

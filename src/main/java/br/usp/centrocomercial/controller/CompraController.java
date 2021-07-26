@@ -1,8 +1,10 @@
 package br.usp.centrocomercial.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.usp.centrocomercial.model.CarrinhoRequest;
@@ -48,6 +50,11 @@ public class CompraController {
 	@PostMapping("/decrementar")
 	public CarrinhoResponse decrementarQntProduto(@RequestBody CarrinhoRequest request) {
 		return this.service.atualizarQntItens(request, -1);		
+	}
+	
+	@GetMapping("/carrinho")
+	public CarrinhoResponse decrementarQntProduto(@RequestParam("about") String about) {
+		return this.service.obterCarrinhoAbout(about);		
 	}
 	
 }
