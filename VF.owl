@@ -745,7 +745,7 @@
         <ontologia:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</ontologia:id>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
-        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.clubeparacachorros.com.br/wp-content/uploads/2016/08/racao-de-cachorro-pode-ser-comida-por-humanos.jpg</ontologia:imagem>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">   </ontologia:imagem>
 
     </owl:NamedIndividual>
     
