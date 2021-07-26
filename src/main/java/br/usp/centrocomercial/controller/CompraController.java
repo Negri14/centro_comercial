@@ -57,4 +57,9 @@ public class CompraController {
 		return this.service.obterCarrinhoAbout(about);		
 	}
 	
+	@GetMapping("/triplas")
+	public void decrementarQntProduto() {
+		this.service.exibirTriplas();
+	}
+	
 }

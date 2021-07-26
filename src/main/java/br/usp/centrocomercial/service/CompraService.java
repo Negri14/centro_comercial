@@ -298,5 +298,9 @@ public class CompraService {
 		System.out.println(new Gson().toJson(jsonList).toString());
 		return montarObject(aboutCarrinho);
 	}
+	
+	public void exibirTriplas() {
+		this.repository.ler();
+	}
 
 }
