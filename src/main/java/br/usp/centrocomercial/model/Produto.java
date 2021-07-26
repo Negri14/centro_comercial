@@ -10,6 +10,7 @@ public class Produto {
 	private String pictureURI;
 	private String categoria;
 	private int quantidade_estoque;
+	private int quantidadeCarrinho;
 
 	public Produto() {}
 
@@ -76,6 +77,23 @@ public class Produto {
 	public void setQuantidadeEstoque(int quantidade_estoque) {
 		this.quantidade_estoque = quantidade_estoque;
 	}
+
+	public int getQuantidade_estoque() {
+		return quantidade_estoque;
+	}
+
+	public void setQuantidade_estoque(int quantidade_estoque) {
+		this.quantidade_estoque = quantidade_estoque;
+	}
+
+	public int getQuantidadeCarrinho() {
+		return quantidadeCarrinho;
+	}
+
+	public void setQuantidadeCarrinho(int quantidadeCarrinho) {
+		this.quantidadeCarrinho = quantidadeCarrinho;
+	}
+	
 	
 	
 	

@@ -45,6 +45,7 @@ public class LojaService {
 	}
 	
 	public List<Loja> buscarLojas() {
+//		repository.ler();
 		ResultSet resultSet = repository.executeSelect(String.format(this.queryLojas, "", ""));
 		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);
 		System.out.println(jsonList.toString());
