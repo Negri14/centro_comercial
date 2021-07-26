@@ -72,7 +72,7 @@ public class CompraService {
 								+"}";
 
 	String queryCarrinho =	Constants.PREFIX
-							+"SELECT ?aboutCarrinho ?aboutItemCarrinho ?quantidade_carrinho ?aboutProduto ((?quantidade_carrinho*?preco) AS ?total_produto) ?preco ?pictureURI"
+							+"SELECT ?aboutCarrinho ?aboutItemCarrinho ?quantidade_carrinho ?aboutProduto ?id ?nome ?descricao ?categoria ?quantidade_estoque ((?quantidade_carrinho*?preco) AS ?total_produto) ?preco ?pictureURI"
 							+"{"
 							+"     ?aboutCarrinho      rdf:type ontologia:Carrinho_de_Compras."
 							+"		OPTIONAL"
@@ -81,7 +81,12 @@ public class CompraService {
 							+"     		?aboutItemCarrinho  ontologia:quantidade_carrinho ?quantidade_carrinho."
 							+"     		?aboutItemCarrinho  ontologia:especifica ?aboutProduto."
 							+"     		?aboutProduto       ontologia:preco ?preco."
-							+"     		?aboutProduto       ontologia:imagem ?pictureURI;"
+							+"     		?aboutProduto       ontologia:imagem ?pictureURI."
+			            	+"          ?aboutProduto ontologia:id ?id ."
+			            	+"          ?aboutProduto ontologia:nome ?nome ."
+			            	+"          ?aboutProduto ontologia:descricao ?descricao ."
+			            	+"          ?aboutProduto ontologia:categoria ?categoria ."
+			            	+"          ?aboutProduto ontologia:quantidade_estoque ?quantidade_estoque;"
 							+ "		}" 
 							+"    FILTER(?aboutCarrinho = <%s>)"
 							+"}";
@@ -265,7 +270,12 @@ public class CompraService {
 				Item i = new Item();
 				i.setAbout(querySolution.get("aboutProduto").toString());
 				i.setPictureURI(querySolution.get("pictureURI").toString());
-				i.setValor(Double.parseDouble(querySolution.get("total_produto").toString().substring(0, querySolution.get("total_produto").toString().indexOf("^^http"))));
+				i.setCategoria(querySolution.get("categoria").toString());
+				i.setDescricao(querySolution.get("descricao").toString());
+				i.setId(querySolution.get("id").toString());
+				i.setNome(querySolution.get("nome").toString());
+				i.setQuantidadeEstoque(Integer.parseInt(querySolution.get("quantidade_estoque").toString().toString().substring(0, querySolution.get("quantidade_estoque").toString().indexOf("^^http"))));
+				i.setPreco(Double.parseDouble(querySolution.get("preco").toString().substring(0, querySolution.get("preco").toString().indexOf("^^http"))));
 				i.setQuantidadeCarrinho(Integer.parseInt(querySolution.get("quantidade_carrinho").toString().toString().substring(0, querySolution.get("quantidade_carrinho").toString().indexOf("^^http"))));
 				valorTotal = valorTotal + Double.parseDouble(querySolution.get("total_produto").toString().substring(0, querySolution.get("total_produto").toString().indexOf("^^http")));
 				
