@@ -1,4 +1,4 @@
-package br.usp.centrocomercial.service;
+package br.usp.centrocomercial.model;
 
 public class NovoClienteResponse {
 	

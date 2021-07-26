@@ -59,13 +59,9 @@ public class ProdutoService {
 	}
 	
 	public List<Produto> buscarProdutos(String aboutLoja) {
-		//repository.ler();
-		System.out.println(aboutLoja);
 		String filter = String.format(queryFilter, "?aboutLoja", "<"+aboutLoja+">");
-		System.out.println(String.format(queryProdutos, filter));
 		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, filter));
 		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);
-		System.out.println(jsonList.toString());
 		List<Produto> response = new Gson().fromJson(jsonList.toString(), lProdutoType);
 		return response;
 	}
@@ -78,7 +74,6 @@ public class ProdutoService {
 			interesses = interesses + "\"" + x + "\"" + ",";
 		}
 		interesses = interesses.substring(0, interesses.length() - 1);
-		System.out.print(interesses);
 		String filter2 = String.format(queryFilterInteresse, "?categoria", interesses);
 		ResultSet resultSet = repository.executeSelect(String.format(queryProdutos, filter.concat(filter2)));
 		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);

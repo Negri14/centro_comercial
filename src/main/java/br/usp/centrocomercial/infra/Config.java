@@ -1,14 +1,8 @@
 package br.usp.centrocomercial.infra;
 
-import java.io.InputStream;
-
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.ReadWrite;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.tdb.TDBFactory;
 import org.apache.jena.tdb.TDBLoader;
 import org.springframework.context.annotation.Bean;
@@ -24,19 +18,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Config {
 	
-	private final String DIRECTORY  = "Databases/CentroEmpresarial";
-	private final String FILE  = "VF.owl";
+	private final String DIRECTORY  = "Databases/CentroComercial";
+	private final String FILE  = "OntologiaCentroCusto.owl";
 
-	
-//	@Bean
-//	public OntModel ontologyModel() {
-//		
-//		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-//		InputStream input = RDFDataMgr.open("C:\\Users\\leoco\\Desktop\\Entrega_1\\EP_1.owl");
-//		model.read(input, "");
-//		return model;
-//		
-//	}
 	
 	@Bean
 	public Dataset dataset() {

@@ -28,30 +28,55 @@ public class CompraService {
 
 
 	String queryInserirItemCarrinho = Constants.PREFIX + 
-						              "INSERT DATA {  <%s> rdf:type ontologia:Item_Carrinho ; ontologia:quantidade_carrinho %d; ontologia:especifica <%s>; }";
+						              "INSERT DATA {  "
+						              + "<%s> rdf:type ontologia:Item_Carrinho ; "
+						              + "	  ontologia:quantidade_carrinho %d; "
+						              + "	  ontologia:especifica <%s>; "
+						              + "}";
 	
 	String queryInserirCarrinho = 	Constants.PREFIX + 
-						            "INSERT DATA { <%s> rdf:type ontologia:Carrinho_de_Compras; %s; ontologia:valor_total %f; }";
+						            "INSERT DATA { "
+						            + "	<%s> rdf:type ontologia:Carrinho_de_Compras; "
+						            + "	%s; ontologia:valor_total %f; "
+						            + "}";
 	
 	String updateComprasUsuario = 	Constants.PREFIX + 
-									"INSERT DATA { <%s> ontologia:possui <%s> } ";		
+									"INSERT DATA { "
+									+ "	<%s> ontologia:possui <%s> "
+									+ "} ";		
 	
 	String queryInserirOrdemServ = 	Constants.PREFIX + 
-						            "INSERT DATA { <%s> rdf:type ontologia:Ordem_Servico;  ontologia:gera <%s>; ontologia:forma_pagamento \"%s\"; }";
+						            "INSERT DATA { "
+						            + "	<%s> rdf:type ontologia:Ordem_Servico;  "
+						            + "	ontologia:gera <%s>; "
+						            + "	ontologia:forma_pagamento \"%s\"; "
+						            + "}";
 	
 	String queryUpdateQntProdutos =	Constants.PREFIX + 
-									"DELETE DATA { <%s> ontologia:quantidade_estoque %d };"+
-									"INSERT DATA { <%s> ontologia:quantidade_estoque %d. };";		
+									"DELETE DATA { "
+									+ "<%s> ontologia:quantidade_estoque %d "
+									+ "};"+
+									"INSERT DATA { "
+									+ "<%s> ontologia:quantidade_estoque %d. "
+									+ "};";		
 	
 	String queryAdicionarItemCarrinho =	Constants.PREFIX + 
-										"INSERT DATA {  <%s> ontologia:armazena <%s> }; ";		
+										"INSERT DATA {  "
+										+ "<%s> ontologia:armazena <%s> "
+										+ "}; ";		
 
 	String queryRemoverItemCarrinho =	Constants.PREFIX + 
-										"DELETE DATA {  <%s> ontologia:armazena <%s> }; ";	
+										"DELETE DATA {  "
+										+ "<%s> ontologia:armazena <%s> "
+										+ "}; ";	
 	
 	String queryAlterarQuantidadeCarrinho =	Constants.PREFIX + 
-											"DELETE DATA {  <%s> ontologia:quantidade_carrinho %d };" +
-											"INSERT DATA { <%s> ontologia:quantidade_carrinho %d. }; ";	
+											"DELETE DATA {  "
+											+ "<%s> ontologia:quantidade_carrinho %d "
+											+ "};" +
+											"INSERT DATA { "
+											+ "<%s> ontologia:quantidade_carrinho %d. "
+											+ "}; ";	
 
 	String queryObterQntItens =	Constants.PREFIX
 								+"SELECT ?about ?quantidade"
@@ -107,12 +132,8 @@ public class CompraService {
 
 	public void gravarCompra(CompraRequest request) {
 		
-		//List<String> idItensAdicionados = this.inserirItensCarrinho(request.getItensCarrinho());
-		//String idCarrinho = this.inserirCarrinho(idItensAdicionados, request.getValorTotal());
 		this.updateUsuario(request.getAboutCarrinho(), request.getAboutCliente());
-		//this.updateQuantidade(request.getItensCarrinho());
 		this.inserirOrdemServico(request.getAboutCarrinho(), request.getFormaPagamento());
-		//this.repository.ler();
 	}
 
 	
@@ -135,19 +156,6 @@ public class CompraService {
 		repository.executeUpdate(String.format(this.updateComprasUsuario, cpf, idCarrinho));
 	}
 
-	private String inserirCarrinho(List<String> idItensAdicionados, double valorTotal) {
-		
-		String idCarrinho = Constants.URI_ONTOLOGIA.concat(UUID.randomUUID().toString());
-		String insertItens = "";
-		for (String id : idItensAdicionados) {
-			insertItens = insertItens.concat("ontologia:armazena <".concat(id).concat(">; "));
-		}
-		
-		System.out.println(String.format(this.queryInserirCarrinho, idCarrinho, insertItens, valorTotal));
-		repository.executeUpdate(String.format(this.queryInserirCarrinho, idCarrinho, insertItens, valorTotal));
-		return idCarrinho;
-	}
-
 	public List<String> inserirItensCarrinho(List<ItemCarrinho> itens) {
 		
 		List<String> itensAdicionados = new LinkedList<String>();
@@ -164,32 +172,23 @@ public class CompraService {
 	public CarrinhoResponse criarCarrinho(CarrinhoRequest request) { //AJUSTAR A MERDA DO VALOR TOTAL
 		
 		String aboutItemCarrinho = Constants.URI_ONTOLOGIA.concat(UUID.randomUUID().toString());
-		System.out.println(String.format(this.queryInserirItemCarrinho, aboutItemCarrinho, request.getQuantidadeProduto(), request.getAboutProduto()));
 		repository.executeUpdate(String.format(this.queryInserirItemCarrinho, aboutItemCarrinho, request.getQuantidadeProduto(), request.getAboutProduto()));
 		
 		String aboutCarrinho = Constants.URI_ONTOLOGIA.concat(UUID.randomUUID().toString());
-		System.out.println(String.format(this.queryInserirCarrinho, aboutCarrinho, ("ontologia:armazena"+"<"+aboutItemCarrinho+">"), 0.0));
 		repository.executeUpdate(String.format(this.queryInserirCarrinho, aboutCarrinho, ("ontologia:armazena"+"<"+aboutItemCarrinho+">"), 0.0));
 		
-		System.out.println(String.format(this.queryCarrinho, aboutItemCarrinho));
-		ResultSet set = repository.executeSelect(String.format(this.queryCarrinho, aboutCarrinho));	
-		List<String> jsonList = jsonConverter.convertResultSetToJson(set);
-		System.out.println(new Gson().toJson(jsonList).toString());
 		return montarObject(aboutCarrinho);
 
 	}
 
 	public CarrinhoResponse removerProdutoCarrinho(CarrinhoRequest request) {
 	
-		//System.out.println(request.getAboutCarrinho());
 		ResultSet set = repository.executeSelect(String.format(this.queryObterItens, request.getAboutCarrinho()));	
-		//System.out.println(set);
 
 		while (set.hasNext()) {
 
 			QuerySolution querySolution = set.next();
 			String aboutItem = querySolution.get("item").toString();
-			System.out.println(aboutItem);
 			ResultSet setProduto = repository.executeSelect(String.format(this.queryObterQntItens, aboutItem, request.getAboutProduto()));	
 			List<String> jsonList = jsonConverter.convertResultSetToJson(setProduto);
 			List<AboutQnt> response = new Gson().fromJson(jsonList.toString(), lProdutoType);
@@ -203,11 +202,7 @@ public class CompraService {
 		
 		}
 		updateQuantidade(request.getAboutProduto(), request.getQuantidadeProduto());
-		ResultSet setw = repository.executeSelect(String.format(this.queryCarrinho,request.getAboutCarrinho()));	
-		List<String> jsonList = jsonConverter.convertResultSetToJson(setw);
-		System.out.println(new Gson().toJson(jsonList).toString());	
-	
-		
+		ResultSet setw = repository.executeSelect(String.format(this.queryCarrinho,request.getAboutCarrinho()));			
 		return montarObject(request.getAboutCarrinho());
 	}
 
@@ -215,11 +210,7 @@ public class CompraService {
 		String aboutItemCarrinho = Constants.URI_ONTOLOGIA.concat(UUID.randomUUID().toString());
 		repository.executeUpdate(String.format(this.queryInserirItemCarrinho, aboutItemCarrinho, request.getQuantidadeProduto(), request.getAboutProduto()));
 		repository.executeUpdate(String.format(this.queryAdicionarItemCarrinho, request.getAboutCarrinho(), aboutItemCarrinho));	
-		ResultSet set = repository.executeSelect(String.format(this.queryCarrinho, request.getAboutCarrinho()));	
-		updateQuantidade(request.getAboutProduto(), request.getQuantidadeProduto()*-1);
-		List<String> jsonList = jsonConverter.convertResultSetToJson(set);
-		System.out.println(new Gson().toJson(jsonList).toString());
-		
+		updateQuantidade(request.getAboutProduto(), request.getQuantidadeProduto()*-1);		
 		return montarObject(request.getAboutCarrinho());
 	}
 
@@ -237,7 +228,6 @@ public class CompraService {
 			List<AboutQnt> response = new Gson().fromJson(jsonList.toString(), lProdutoType);
 			
 			for (AboutQnt aq : response) {
-				System.out.println("x_x");
 				int novaQnt = aq.getQuantidade() + valorAtualizacao;
 				
 				repository.executeUpdate(String.format(this.queryAlterarQuantidadeCarrinho, aq.getAbout(), aq.getQuantidade(), aq.getAbout(), novaQnt));
@@ -293,9 +283,6 @@ public class CompraService {
 	}
 	
 	public CarrinhoResponse obterCarrinhoAbout(String aboutCarrinho) {
-		ResultSet set = repository.executeSelect(String.format(this.queryCarrinho, aboutCarrinho));	
-		List<String> jsonList = jsonConverter.convertResultSetToJson(set);
-		System.out.println(new Gson().toJson(jsonList).toString());
 		return montarObject(aboutCarrinho);
 	}
 	

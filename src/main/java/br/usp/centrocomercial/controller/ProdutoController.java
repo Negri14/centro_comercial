@@ -36,11 +36,4 @@ public class ProdutoController {
 		this.service.deletar();
 	}
 	
-
-	
-	
-//	@GetMapping(value = "/lojaAtv")
-//	public String obterLojasPorAtividade(@RequestParam("atividade") String atividade) {
-//		return this.service.buscarLojasAtividade(atividade);
-//	}
 }

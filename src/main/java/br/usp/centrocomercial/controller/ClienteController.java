@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.usp.centrocomercial.model.NovoClienteRequest;
+import br.usp.centrocomercial.model.NovoClienteResponse;
 import br.usp.centrocomercial.model.Produto;
 import br.usp.centrocomercial.service.ClienteService;
-import br.usp.centrocomercial.service.NovoClienteResponse;
 import io.swagger.annotations.Api;
 
 @RestController

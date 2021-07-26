@@ -17,6 +17,7 @@ import br.usp.centrocomercial.infra.Constants;
 import br.usp.centrocomercial.infra.JsonConverter;
 import br.usp.centrocomercial.model.Cliente;
 import br.usp.centrocomercial.model.NovoClienteRequest;
+import br.usp.centrocomercial.model.NovoClienteResponse;
 import br.usp.centrocomercial.model.Produto;
 
 @Service
@@ -33,7 +34,14 @@ public class ClienteService {
 		                   	 "%s }"; 
 	
 	
-	String queryCadastrar =   Constants.PREFIX + "INSERT DATA { <%s> rdf:type ontologia:Cliente; ontologia:nome \"%s\"; ontologia:email \"%s\"; ontologia:cpf \"%s\"; ontologia:nascimento \"%s\"; %s }";
+	String queryCadastrar =   Constants.PREFIX 
+							+ "INSERT DATA {" 
+							+ " <%s> rdf:type ontologia:Cliente; "
+							+ "      ontologia:nome \"%s\"; "
+							+ "		 ontologia:email \"%s\";" 
+							+ "		 ontologia:cpf \"%s\";"
+							+ " 	 ontologia:nascimento \"%s\";" 
+							+ " %s }";
 
 	private String queryFilter = "FILTER(%s = \"%s\")";
 	

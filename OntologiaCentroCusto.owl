@@ -611,6 +611,7 @@
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
         <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://a-static.mlcdn.com.br/1500x1500/the-beatles-abbey-road-2cds-deluxe-edition-universal-music/lojinhamis/641p/d322850a537e4946bdfab7c7f3fbeb4e.jpg</ontologia:imagem>
+            <ontologia:descricao rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CD Abbey Road da banda The Beatles </ontologia:descricao>
     </owl:NamedIndividual>
     
 
@@ -624,6 +625,9 @@
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
                 <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.lpm.com.br/livros/imagens/assassinato_no_expresso_oriente_hq_9788525437044_hd.jpg</ontologia:imagem>
+            <ontologia:categoria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Livros</ontologia:categoria>
+        <ontologia:descricao rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assasinato no Expresso Oriente</ontologia:descricao>
+
     </owl:NamedIndividual>
     
 
@@ -678,6 +682,8 @@
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.livrariagalaxia.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)1111-1111</ontologia:telefone>
           <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://fastly.4sqi.net/img/general/600x600/7742149_u1Vc4XJD4pSB72LmwfouY8G5JJDajMDhuIrQYz-ur4Q.jpg</ontologia:imagem>
+          <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Box_Dom_Quixote"/>
+
     </owl:NamedIndividual>
     
 
@@ -691,6 +697,7 @@
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.livrariasouza.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)2222-2222</ontologia:telefone>
                 <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://diariodorio.com/wp-content/uploads/2016/02/Livraria-Cultura-do-Rio-fica-na-Rua-Senador-Dantas-1-1280x720.jpg</ontologia:imagem>
+        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Assassinato_no_Expresso_Oriente"/>
 
     </owl:NamedIndividual>
     
@@ -729,7 +736,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pet Shop Cão e Gato</ontologia:nome>
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.caoegato.com.br</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)4444-4444</ontologia:telefone>
-        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>
+        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Ração_NutriMais"/>
                 <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://s3-sa-east-1.amazonaws.com/simplesvet-public/site/3596/3596-f02cb85e145eefe3298183a319175c55.jpg</ontologia:imagem>
 
     </owl:NamedIndividual>
@@ -745,7 +752,8 @@
         <ontologia:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</ontologia:id>
         <ontologia:preco rdf:datatype="http://www.w3.org/2001/XMLSchema#double">19.9</ontologia:preco>
         <ontologia:quantidade_estoque rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</ontologia:quantidade_estoque>
-        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">   </ontologia:imagem>
+        <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://ayoola.com.br/petshop/files/2014/05/racao-para-caes-mista-8-tipos-de-racao-19-por-cento-de-proteina-sao-paulo-sp-brasil__7DE309_1-300x290.jpg</ontologia:imagem>
+        <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ração Nutri Mais</ontologia:nome>
 
     </owl:NamedIndividual>
     
@@ -759,7 +767,7 @@
         <ontologia:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supermercado Brasil</ontologia:nome>
         <ontologia:site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.superbrasil.com</ontologia:site>
         <ontologia:telefone rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(11)5555-5555</ontologia:telefone>
-        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Xampu_Apple"/>
+        <ontologia:oferece rdf:resource="http://www.centrocomercial.com/ontologia#Abbey_Road"/>
         <ontologia:imagem rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://monitormercantil.com.br/wp-content/uploads/2020/12/Supermercado.jpg</ontologia:imagem>
     </owl:NamedIndividual>
     
