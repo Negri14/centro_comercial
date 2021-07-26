@@ -123,12 +123,10 @@ public class CompraService {
 	}
 	
 	
-	private void updateQuantidade(List<ItemCarrinho> itens) {
-		for ( ItemCarrinho ic : itens) {
-			int qntAnt = produtoService.obterQuantidadeItens(ic.getAboutProduto());
-			int qntAtu = qntAnt - ic.getQuantidade();
-			this.repository.executeUpdate(String.format(this.queryUpdateQntProdutos, ic.getAboutProduto(), qntAnt, ic.getAboutProduto(), qntAtu));
-		}
+	private void updateQuantidade(String aboutProduto, int quantidade) {
+			int qntAnt = produtoService.obterQuantidadeItens(aboutProduto);
+			int qntAtu = qntAnt + quantidade;
+			this.repository.executeUpdate(String.format(this.queryUpdateQntProdutos, aboutProduto, qntAnt, aboutProduto, qntAtu));
 	}
 	
 	
@@ -204,6 +202,7 @@ public class CompraService {
 
 		
 		}
+		updateQuantidade(request.getAboutProduto(), request.getQuantidadeProduto());
 		ResultSet setw = repository.executeSelect(String.format(this.queryCarrinho,request.getAboutCarrinho()));	
 		List<String> jsonList = jsonConverter.convertResultSetToJson(setw);
 		System.out.println(new Gson().toJson(jsonList).toString());	
@@ -217,6 +216,7 @@ public class CompraService {
 		repository.executeUpdate(String.format(this.queryInserirItemCarrinho, aboutItemCarrinho, request.getQuantidadeProduto(), request.getAboutProduto()));
 		repository.executeUpdate(String.format(this.queryAdicionarItemCarrinho, request.getAboutCarrinho(), aboutItemCarrinho));	
 		ResultSet set = repository.executeSelect(String.format(this.queryCarrinho, request.getAboutCarrinho()));	
+		updateQuantidade(request.getAboutProduto(), request.getQuantidadeProduto()*-1);
 		List<String> jsonList = jsonConverter.convertResultSetToJson(set);
 		System.out.println(new Gson().toJson(jsonList).toString());
 		
@@ -246,6 +246,7 @@ public class CompraService {
 
 		
 		}
+		updateQuantidade(request.getAboutProduto(), valorAtualizacao*-1);
 		return montarObject(request.getAboutCarrinho());
 		
 	}
