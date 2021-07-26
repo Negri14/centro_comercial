@@ -60,6 +60,15 @@ public class LojaService {
 		return response;
 
 	}
+	
+	public List<Loja> buscaLojasPorNome(String atividade) {
+		String filter = String.format("FILTER(regex( LCASE(STR(?nome)), \"%s\" ))", atividade.toLowerCase());
+		ResultSet resultSet = repository.executeSelect(String.format(this.queryLojas, filter, ""));
+		List<String> jsonList = jsonConverter.convertResultSetToJson(resultSet);
+		List<Loja> response = new Gson().fromJson(jsonList.toString(), lLojaType);
+		return response;
+
+	}
 
 	public List<Loja> buscarLojasOrdenado(String tipo) {
 		ResultSet resultSet = repository.executeSelect(String.format(this.queryLojas, "", String.format(this.queryOrder, tipo)));

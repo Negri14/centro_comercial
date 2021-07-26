@@ -9,7 +9,8 @@ public class Produto {
 	private double preco;
 	private String pictureURI;
 	private String categoria;
-	
+	private int quantidade_estoque;
+
 	public Produto() {}
 
 	public String getAbout() {
@@ -67,6 +68,16 @@ public class Produto {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+	public int getQuantidadeEstoque() {
+		return quantidade_estoque;
+	}
+
+	public void setQuantidadeEstoque(int quantidade_estoque) {
+		this.quantidade_estoque = quantidade_estoque;
+	}
+	
+	
 	
 	
 }
